@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+    outline: none;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+:root {
+    --Schwarz: #000000;
+    --Rot: #ff0000;
+    --Gelb: #ffd700;
+    --Weiß: #f5f5f5;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url("assets/fonts/Poppins/Poppins-Regular.ttf");
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* Header */
+
+header {
+    position: fixed;
+    width: 100%;
+    padding: 1rem 9%;
+    background-color: var(--Gelb);
+    z-index: 998;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .container .logo {
+    transition: all .4s ease;
+}
+
+header .container .logo:hover {
+    transform: scale(1.1);
+}
+
+header .container .logo h1 {
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--Schwarz);
+    text-transform: uppercase;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+nav ul li {
+    transition: all .3s ease;
+}
+
+nav ul li:hover {
+    transform: scale(1.1);
+}
+
+nav ul li::after {
+    content: '';
+    display: block;
+    padding-bottom: 0.3rem;
+    border-bottom: .15rem solid var(--Schwarz);
+    transform: scaleX(0);
+    transition: all .4s linear;
+}
+
+nav ul li:hover::after {
+    transform: scaleX(.7);
+}
+
+nav ul li a {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--Schwarz);
+}
+
+.hamburger {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 1.8rem;
+}
+
+.hamburger input {
+    position: absolute;
+    width: 3.5rem;
+    height: 2.8rem;
+    top: -0.4rem;
+    left: -0.55rem;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.hamburger span {
+    display: block;
+    width: 2.5rem;
+    height: .3rem;
+    background-color: var(--Schwarz);
+    transition: all .5s;
+}
+
+.hamburger span:nth-child(2) {
+    transform-origin: 0 0;
+}
+
+.hamburger span:last-child {
+    transform-origin: 0 100%;
+}
+
+.hamburger input:checked~span:nth-child(2) {
+    transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.hamburger input:checked~span:nth-child(3) {
+    transform: scale(0);
+    opacity: 0;
+}
+
+.hamburger input:checked~span:last-child {
+    transform: rotate(-45deg) translate(-1px, 0);
+}
+
+/* Responsive Breakpoints */
+
+/* lg */
+@media (max-width: 1366px) {
+    html {
+        font-size: 80%;
+    }
+
+    header {
+        padding: 1rem 8%;
+    }
+}
+
+/* md */
+@media (max-width: 768px) {
+    html {
+        font-size: 62.5%;
+    }
+
+    header {
+        padding: 1rem 7%;
+    }
+
+    nav ul {
+        position: absolute;
+        width: 65%;
+        height: 70vh;
+        flex-direction: column;
+        justify-content: space-evenly;
+        top: 0;
+        right: -100%;
+        background-color: var(--Gelb);
+        opacity: 0;
+        transition: all .5s;
+    }
+
+    nav ul.active {
+        right: 0;
+        opacity: 1;
+    }
+
+    nav ul li a {
+        font-size: 2rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* sm */
+@media (max-width: 540px) {
+    html {
+        font-size: 55%;
+    }
+
+    header {
+        padding: 1rem 6%;
+    }
+
+    nav ul li a {
+        font-size: 1.5rem;
+    }
+}
